@@ -91,7 +91,7 @@
                         <div class="col-md-6">
                             <button class="btn btn-primary m-2" @click="registerHeaders">GRABAR</button>
                             <button class="btn btn-primary m-2" @click="showModal=true" v-if="$route.params.id!=='create'">AGREGAR</button>
-                            <button class="btn btn-danger" v-if="$route.params.id!=='create'">PDF</button>
+                            <a href={{process.env.VUE_APP_API_URL}} v-if="$route.params.id!=='create'">PDF</a>
                             <br>
                         </div>
                     </div>

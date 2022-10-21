@@ -13,7 +13,7 @@ export default async function Auth (to, from ,next){
                 localStorage.setItem("token", response.data.access_token)
                 next({name: 'home'})
             } else {
-                location.href =  `${process.env.VUE_APP_AUTH_URL}/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID}&scope=profile`
+                location.href =  `${process.env.VUE_APP_AUTH_URL}/authorize?response_type=code&client_id=${process.env.VUE_APP_OAUTH_CLIENT_ID}&scope=profile`
             }
 
         } else {
@@ -21,7 +21,7 @@ export default async function Auth (to, from ,next){
         }
     } else {
         if(!localStorage.token){
-            location.href =  `${process.env.VUE_APP_AUTH_URL}/authorize?response_type=code&client_id=${process.env.VUE_APP_CLIENT_ID}&scope=profile`
+            location.href =  `${process.env.VUE_APP_AUTH_URL}/authorize?response_type=code&client_id=${process.env.VUE_APP_OAUTH_CLIENT_ID}&scope=profile`
         } else {
             next();
         }
