@@ -1,24 +1,60 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Auth from './middleware'
 
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    beforeEnter: Auth
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    path: '/in',
+    name: 'ingresos',
+    component: () => import(/* webpackChunkName: "about" */ '../views/IncomesView.vue'),
+    beforeEnter: Auth
+  },
+  {
+    path: '/in/create',
+    name: 'create_ingresos',
+    component: () => import(/* webpackChunkName: "about" */ '../views/IncomeView.vue'),
+    beforeEnter: Auth
+  },
+  {
+    path: '/in/:id',
+    name: 'create_ingresos',
+    component: () => import(/* webpackChunkName: "about" */ '../views/IncomeView.vue'),
+    beforeEnter: Auth
+  },
+  {
+    path: '/out',
+    name: 'movements',
+    component: () => import(/* webpackChunkName: "about" */ '../views/OutsView.vue'),
+    beforeEnter: Auth
+  },
+  {
+    path: '/out/create',
+    name: 'create_movement',
+    component: () => import(/* webpackChunkName: "about" */ '../views/OutView.vue'),
+    beforeEnter: Auth
+  },
+  {
+    path: '/out/:id',
+    name: 'create_movement',
+    component: () => import(/* webpackChunkName: "about" */ '../views/OutView.vue'),
+    beforeEnter: Auth
+  },
+  {
+    path: '/inventary',
+    name: 'inventary',
+    component: () => import(/* webpackChunkName: "about" */ '../views/InventaryView.vue'),
+    beforeEnter: Auth
   }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 
