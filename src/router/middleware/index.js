@@ -5,7 +5,7 @@ export default async function Auth (to, from ,next){
         if(!localStorage.token){
             let response
             try {
-                response = await axios.post('http://localhost:4000'+'/token',{code: to.query.code});   
+                response = await axios.post(process.env.VUE_APP_API_URL+'/token',{code: to.query.code});   
             } catch (error) {
                 response = null;
             }
