@@ -133,7 +133,7 @@
                     <div class="col-md-6">
                         <button class="btn btn-primary m-2" @click="registerHeaders" v-if="$route.params.id==='create'">GRABAR</button>
                         <button class="btn btn-primary m-2" @click="showModal=true" v-if="$route.params.id!=='create'">AGREGAR</button>
-                        <button class="btn btn-danger" v-if="$route.params.id!=='create'">PDF</button>
+                        <button class="btn btn-danger" @click="generateReport" v-if="$route.params.id!=='create'">PDF</button>
                         <br>
                     </div>
                 </div>
@@ -467,6 +467,10 @@ import moment from 'moment'
             } else {
                 alert("Error al crear el nuevo usuario")
             }
+        },
+        generateReport: async function(){
+            let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=out&id=${this.$route.params.id}`;
+            window.open(reportUrl, '_blank')
         }
     },
     created(){

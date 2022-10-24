@@ -91,7 +91,7 @@
                         <div class="col-md-6">
                             <button class="btn btn-primary m-2" @click="registerHeaders">GRABAR</button>
                             <button class="btn btn-primary m-2" @click="showModal=true" v-if="$route.params.id!=='create'">AGREGAR</button>
-                            <a href={{process.env.VUE_APP_API_URL}} v-if="$route.params.id!=='create'">PDF</a>
+                            <button class="btn btn-danger m-2" @click="generateReport" v-if="$route.params.id!=='create'">PDF</button>
                             <br>
                         </div>
                     </div>
@@ -175,7 +175,7 @@ export default {
             if(this.$route.params.id!=="create"){
                 let response
                 try {
-                    response = await axios.get(`${process.env.VUE_APP_API_URL}/${this.$route.params.id}`,{},{
+                    response = await axios.get(`${process.env.VUE_APP_API_URL}/movement/${this.$route.params.id}`,{},{
                     headers:{
                         Authorization: 'Bearer '+localStorage.getItem("token")
                     }
@@ -323,6 +323,10 @@ export default {
             } else {
                 alert("Error al crear el nuevo usuario")
             }
+        },
+        generateReport: async function(){
+            let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=in&id=${this.$route.params.id}`;
+            window.open(reportUrl, '_blank')
         }
     },
     created(){

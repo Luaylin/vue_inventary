@@ -4,7 +4,7 @@
           <div class="row">
             <br>
             <div>
-              <button class="btn btn-danger">PDF</button>
+              <button class="btn btn-danger" @click="generateReport">PDF</button>
             </div>
             <div class="m-2"></div>
               <div class="table-responsive">
@@ -99,7 +99,11 @@
         if(response!==null){
           this.inventary = response.data
         }
-      }
+      },
+      generateReport: async function(){
+            let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=inventary`;
+            window.open(reportUrl, '_blank')
+        }
     },
     created(){
       this.getInventary();
