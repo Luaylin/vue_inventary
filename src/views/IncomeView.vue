@@ -175,7 +175,7 @@ export default {
             if(this.$route.params.id!=="create"){
                 let response
                 try {
-                    response = await axios.get(`${process.env.VUE_APP_API_URL}/movement/${this.$route.params.id}`,{},{
+                    response = await axios.get(`${process.env.VUE_APP_API_URL}/movement/${this.$route.params.id}`,{
                     headers:{
                         Authorization: 'Bearer '+localStorage.getItem("token")
                     }
