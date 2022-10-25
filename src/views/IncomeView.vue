@@ -217,6 +217,7 @@ export default {
         },
         getUserId: async function () {
             let response
+            console.log(localStorage.getItem("token"))
             if(this.isNewUser){
                 try {
                 response = await axios.post(`${process.env.VUE_APP_API_URL}/user/`, {
