@@ -31,7 +31,7 @@
                         </tr>
                         <tr v-for="(item, index) in incomes" :key="index">
                           <td class="text-center">{{item.register_code}}</td>
-                          <td class="text-center">{{item.fullName}}</td>
+                          <td class="text-center">{{item.responsible_user.fullname}}</td>
                           <td class="text-center">{{item.unit_organic}}</td>
                           <td class="text-center">{{item.local}}</td>
                           <td class="text-center">{{moment(item.date).format("YYYY-MM-DD")}}</td>
@@ -74,7 +74,7 @@
             } catch (error) {
                 response = [];
             }
-            this.incomes = response.data.data
+            this.incomes = response.data
         },
         selectIngreso: async function(id){
             this.$router.push({
