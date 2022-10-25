@@ -243,7 +243,7 @@ export default {
         findUser: async function(){
             let response;
             try {
-                response = await axios.get(`${process.env.VUE_APP_API_URL}/user/`+this.document,{},{
+                response = await axios.get(`${process.env.VUE_APP_API_URL}/user/`+this.document,{
                         headers: {
                             Authorization: "Bearer " + localStorage.getItem("token")
                         }
