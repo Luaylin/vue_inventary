@@ -231,7 +231,7 @@ export default {
                     response = null;
                 }
                 if (response !== null) {
-                    this.user_id = response.data.id;
+                    response = response.data.id;
                 }
             } else {
                 response = this.user_id
