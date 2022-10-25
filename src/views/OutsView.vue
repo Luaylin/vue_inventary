@@ -85,7 +85,7 @@
             } catch (error) {
                 response = [];
             }
-            this.outs = response.data
+            this.outs = response.data.data
         },
         selectIngreso: async function(id){
             this.$router.push({

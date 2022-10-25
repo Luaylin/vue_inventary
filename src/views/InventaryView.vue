@@ -97,7 +97,7 @@
           response = null;
         }
         if(response!==null){
-          this.inventary = response.data
+          this.inventary = response.data.data
         }
       },
       generateReport: async function(){
