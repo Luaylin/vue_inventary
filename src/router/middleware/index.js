@@ -11,7 +11,7 @@ export default async function Auth (to, from ,next){
             }
             if(response!==null){
                 localStorage.setItem("token", response.data.access_token)
-                next({name: 'home'})
+                next({name: 'ingresos'})
             } else {
                 location.href =  `${process.env.VUE_APP_AUTH_URL}/authorize?response_type=code&client_id=${process.env.VUE_APP_OAUTH_CLIENT_ID}&scope=profile`
             }
