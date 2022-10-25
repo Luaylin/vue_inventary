@@ -216,6 +216,7 @@ export default {
             this.showModal = false;
         },
         getUserId: async function () {
+            let response
             if(this.isNewUser){
                 try {
                 response = await axios.post(`${process.env.VUE_APP_API_URL}/user/`, {
