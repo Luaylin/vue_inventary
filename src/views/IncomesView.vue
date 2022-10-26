@@ -74,7 +74,7 @@
             } catch (error) {
                 response = [];
             }
-            this.incomes = response.data
+            this.incomes = response.data.data
         },
         selectIngreso: async function(id){
             this.$router.push({
