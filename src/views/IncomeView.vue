@@ -59,11 +59,11 @@
                             <br>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Nombres y Apellidos" v-model="fullname" :readonly="!isNewUser">
+                            <input type="text" class="form-control" placeholder="Nombres y Apellidos" v-model="fullname">
                             <br>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Correo Electrónico" v-model="email" :readonly="!isNewUser">
+                            <input type="text" class="form-control" placeholder="Correo Electrónico" v-model="email">
                             <br>
                         </div>
                         <div class="col-md-6">
