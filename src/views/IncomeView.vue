@@ -185,9 +185,9 @@ export default {
                 }
                 if(response!==null){
                     response = response.data;
-                    this.fullname = response.responsible_user.fullname
-                    this.document = response.responsible_user.document
-                    this.email = response.responsible_user.email
+                    this.fullname = response.responsible_user_name
+                    this.document = response.responsible_user_document
+                    this.email = response.responsible_user_email
                     this.unit_organic = response.unit_organic
                     this.local = response.local
                     this.address = response.address
