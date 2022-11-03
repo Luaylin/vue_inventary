@@ -224,7 +224,7 @@ export default {
                 this.email = "";
                 response = null;
             }
-            if(response!==null && response.size===1){
+            if(response!==null && response.data.size===1){
                 this.document = response.data.code;
                 this.fullname = response.data.data[0].fullName;
                 this.email = response.data.data[0].mail

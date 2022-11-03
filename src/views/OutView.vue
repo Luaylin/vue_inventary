@@ -292,20 +292,20 @@ import moment from 'moment'
         findResponsable: async function(){
             let response;
             try {
-                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.document}`);
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.responsable.document}`);
             } catch (error) {
                 this.responsable.fullname = "";
                 this.responsable.email = "";
                 response = null;
             }
-            if(response!==null && response.size===1){
+            if(response!==null && response.data.size===1){
                 this.responsable.document = response.data.code;
                 this.responsable.fullname = response.data.data[0].fullName;
                 this.responsable.email = response.data.data[0].mail
             } else {
                 try {
                     response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
-                        dni: this.document
+                        dni: this.responsable.document
                     });
                 } catch (error) {
                     this.responsable.fullname = "";
@@ -347,20 +347,20 @@ import moment from 'moment'
         findDestino: async function(){
             let response;
             try {
-                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.document}`);
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.destino.document}`);
             } catch (error) {
                 this.destino.fullname = "";
                 this.destino.email = "";
                 response = null;
             }
-            if(response!==null && response.size===1){
+            if(response!==null && response.data.size===1){
                 this.destino.document = response.data.code;
                 this.destino.fullname = response.data.data[0].fullName;
                 this.destino.email = response.data.data[0].mail
             } else {
                 try {
                     response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
-                        dni: this.document
+                        dni: this.destino.document
                     });
                 } catch (error) {
                     this.destino.fullname = "";
