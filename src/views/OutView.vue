@@ -289,30 +289,37 @@ import moment from 'moment'
             this.findBien = false;
             this.showModal = false;
         },
-      findResponsable: async function(){
-          let response;
-          try {
-              response = await axios.get(`${process.env.VUE_APP_API_URL}/user/`+this.responsable.dni,{},{
-                      headers: {
-                          Authorization: "Bearer " + localStorage.getItem("token")
-                      }
-                  })
-          } catch (error) {
-              this.responsable.fullname = "";
-              this.responsable.email = "";
-              this.responsable.user_id = 0
-              this.responsable.isNewUser = true;
-              alert("Usuario no encontrado")
-              response = null;
-          }
-          if(response!==null){
-              this.responsable.dni = response.data.document;
-              this.responsable.fullname = response.data.fullname;
-              this.responsable.email = response.data.email
-              this.responsable.user_id = response.data.id
-              this.responsable.isNewUser = false;
-          }
-      },
+        findResponsable: async function(){
+            let response;
+            try {
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.document}`);
+            } catch (error) {
+                this.responsable.fullname = "";
+                this.responsable.email = "";
+                response = null;
+            }
+            if(response!==null && response.size===1){
+                this.responsable.document = response.data.code;
+                this.responsable.fullname = response.data.data[0].fullName;
+                this.responsable.email = response.data.data[0].mail
+            } else {
+                try {
+                    response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
+                        dni: this.document
+                    });
+                } catch (error) {
+                    this.responsable.fullname = "";
+                    this.responsable.email = "";
+                    response = null
+                }
+                if(response!==null){
+                    this.responsable.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+esponse.data.return.datosPersona.prenombres;
+                    this.responsable.email = ""
+                } else {
+                  alert("Persona no encontrada")
+                }
+            }
+        },
       getUserId: async function (user) {
             let response
             if(user.isNewUser){
@@ -337,30 +344,37 @@ import moment from 'moment'
             }
             return response;
         },
-      findDestino: async function(){
-          let response;
-          try {
-              response = await axios.get(`${process.env.VUE_APP_API_URL}/user/`+this.destino.dni,{},{
-                      headers: {
-                          Authorization: "Bearer " + localStorage.getItem("token")
-                      }
-                  })
-          } catch (error) {
-              this.destino.fullname = "";
-              this.destino.email = "";
-              this.destino.user_id = 0
-              this.destino.isNewUser = true;
-              alert("Usuario no encontrado")
-              response = null;
-          }
-          if(response!==null){
-              this.destino.dni = response.data.document;
-              this.destino.fullname = response.data.fullname;
-              this.destino.email = response.data.email
-              this.destino.user_id = response.data.id
-              this.destino.isNewUser = false;
-          }
-      },
+        findDestino: async function(){
+            let response;
+            try {
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.document}`);
+            } catch (error) {
+                this.destino.fullname = "";
+                this.destino.email = "";
+                response = null;
+            }
+            if(response!==null && response.size===1){
+                this.destino.document = response.data.code;
+                this.destino.fullname = response.data.data[0].fullName;
+                this.destino.email = response.data.data[0].mail
+            } else {
+                try {
+                    response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
+                        dni: this.document
+                    });
+                } catch (error) {
+                    this.destino.fullname = "";
+                    this.destino.email = "";
+                    response = null
+                }
+                if(response!==null){
+                    this.destino.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+esponse.data.return.datosPersona.prenombres;
+                    this.destino.email = ""
+                } else {
+                  alert("Persona no encontrada")
+                }
+            }
+        },
       searchInventary: async function(){
         let response
         try {

@@ -218,21 +218,32 @@ export default {
         findUser: async function(){
             let response;
             try {
-                response = await axios.get(`${process.env.VUE_APP_API_URL}/user/`+this.document,{
-                        headers: {
-                            Authorization: "Bearer " + localStorage.getItem("token")
-                        }
-                    })
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.document}`);
             } catch (error) {
                 this.fullname = "";
                 this.email = "";
-                alert("Usuario no encontrado")
                 response = null;
             }
-            if(response!==null){
-                this.document = response.data.document;
-                this.fullname = response.data.fullname;
-                this.email = response.data.email
+            if(response!==null && response.size===1){
+                this.document = response.data.code;
+                this.fullname = response.data.data[0].fullName;
+                this.email = response.data.data[0].mail
+            } else {
+                try {
+                    response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
+                        dni: this.document
+                    });
+                } catch (error) {
+                    this.fullname = "";
+                    this.email = "";
+                    response = null
+                }
+                if(response!==null){
+                    this.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+esponse.data.return.datosPersona.prenombres;
+                    this.email = ""
+                } else {
+                    alert("Persona no encontrada")
+                }
             }
         },
         registerInventary: async function(){
