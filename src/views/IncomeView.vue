@@ -215,30 +215,6 @@ export default {
             };
             this.showModal = false;
         },
-        getUserId: async function () {
-            let response
-            if(this.isNewUser){
-                try {
-                response = await axios.post(`${process.env.VUE_APP_API_URL}/user/`, {
-                    fullname: this.fullname,
-                    document: this.document,
-                    email: this.email
-                }, {
-                    headers: {
-                        Authorization: "Bearer " + localStorage.getItem("token")
-                    }
-                });
-                } catch (error) {
-                    response = null;
-                }
-                if (response !== null) {
-                    response = response.data.id;
-                }
-            } else {
-                response = this.user_id
-            }
-            return response;
-        },
         findUser: async function(){
             let response;
             try {
@@ -250,8 +226,6 @@ export default {
             } catch (error) {
                 this.fullname = "";
                 this.email = "";
-                this.user_id = 0
-                this.isNewUser = true;
                 alert("Usuario no encontrado")
                 response = null;
             }
@@ -259,8 +233,6 @@ export default {
                 this.document = response.data.document;
                 this.fullname = response.data.fullname;
                 this.email = response.data.email
-                this.user_id = response.data.id
-                this.isNewUser = false;
             }
         },
         registerInventary: async function(){
@@ -285,10 +257,7 @@ export default {
             this.hideModal();
         },
         registerHeaders: async function () {
-            let response
-            this.user_id = await this.getUserId();
-            if (response !== null) {
-                try {
+            try {
                     response = await axios.post(`${process.env.VUE_APP_API_URL}/movement`, {
                         register_code: this.register_code,
                         type: "I",
@@ -297,8 +266,12 @@ export default {
                         unit_organic: this.unit_organic,
                         local: this.local,
                         address: this.address,
-                        responsible_user_id: this.user_id,
-                        destiny_user_id: this.user_id,
+                        responsible_user_email: this.email,
+                        responsible_user_name: this.fullname,
+                        responsible_user_document: this.document,
+                        destiny_user_email: this.email,
+                        destiny_user_name: this.fullname,
+                        destiny_user_document: this.document,
                         date:  moment(this.date, 'YYYY/MM/DD').toDate()
                     }, {
                         headers: {
@@ -320,9 +293,6 @@ export default {
                 } else {
                     alert("Error al crear")
                 }
-            } else {
-                alert("Error al crear el nuevo usuario")
-            }
         },
         generateReport: async function(){
             let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=in&id=${this.$route.params.id}`;

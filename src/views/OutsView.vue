@@ -39,8 +39,8 @@
                         </tr>
                         <tr v-for="(item, index) in outs" :key="index">
                           <td class="text-center">{{item.register_code}}</td>
-                          <td class="text-center">{{item.responsible_user.fullname}}</td>
-                          <td class="text-center">{{item.destiny_user.fullname}}</td>
+                          <td class="text-center">{{item.responsible_user_name}}</td>
+                          <td class="text-center">{{item.destiny_user_name}}</td>
                           <td class="text-center">{{item.unit_organic_destiny}}</td>
                           <td class="text-center">{{item.local_destiny}}</td>
                           <td class="text-center">{{moment(item.date).format('YYYY-MM-DD')}}</td>

@@ -441,8 +441,12 @@ import moment from 'moment'
                         unit_organic_destiny: this.destino.unit_organic,
                         local_destiny: this.destino.local,
                         address_destiny: this.destino.address,
-                        responsible_user_id: this.responsible_user_id,
-                        destiny_user_id: this.destiny_user_id,
+                        responsible_user_email: this.responsable.email,
+                        responsible_user_name: this.responsable.fullname,
+                        responsible_user_document: this.responsable.dni,
+                        destiny_user_email: this.destino.email,
+                        destiny_user_name: this.destino.fullname,
+                        destiny_user_document: this.destino.dni,
                         date: moment(this.date, 'YYYY/MM/DD').toDate()
                     }, {
                         headers: {
