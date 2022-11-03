@@ -329,6 +329,7 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
     display: table;
     transition: opacity 0.3s ease;
+    overflow-y:scroll;
   }
   
   .modal-wrapper {
