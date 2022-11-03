@@ -329,12 +329,13 @@ export default {
     background-color: rgba(0, 0, 0, 0.5);
     display: table;
     transition: opacity 0.3s ease;
-    overflow-y:scroll;
   }
   
   .modal-wrapper {
     display: table-cell;
     vertical-align: middle;
+    overflow-y: scroll;
+    max-width: 500px;
   }
   
   .modal-container {
