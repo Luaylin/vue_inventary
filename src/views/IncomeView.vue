@@ -194,7 +194,6 @@ export default {
                     this.date = moment(response.date).format("YYYY-MM-DD")
                     this.register_code = response.register_code
                     this.isNewUser = false
-                    this.user_id = response.responsible_user.id
                     this.details = response.details
                 }
             }
