@@ -239,7 +239,7 @@ export default {
                     response = null
                 }
                 if(response!==null){
-                    this.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+esponse.data.return.datosPersona.prenombres;
+                    this.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+response.data.return.datosPersona.prenombres;
                     this.email = ""
                 } else {
                     alert("Persona no encontrada")
@@ -268,6 +268,7 @@ export default {
             this.hideModal();
         },
         registerHeaders: async function () {
+            let response
             try {
                     response = await axios.post(`${process.env.VUE_APP_API_URL}/movement`, {
                         register_code: this.register_code,

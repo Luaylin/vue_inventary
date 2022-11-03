@@ -313,7 +313,7 @@ import moment from 'moment'
                     response = null
                 }
                 if(response!==null){
-                    this.responsable.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+esponse.data.return.datosPersona.prenombres;
+                    this.responsable.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+response.data.return.datosPersona.prenombres;
                     this.responsable.email = ""
                 } else {
                   alert("Persona no encontrada")
@@ -368,7 +368,7 @@ import moment from 'moment'
                     response = null
                 }
                 if(response!==null){
-                    this.destino.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+esponse.data.return.datosPersona.prenombres;
+                    this.destino.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+response.data.return.datosPersona.prenombres;
                     this.destino.email = ""
                 } else {
                   alert("Persona no encontrada")
