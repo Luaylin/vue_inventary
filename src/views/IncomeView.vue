@@ -24,7 +24,12 @@
                 <br>
                 <input type="text" class="form-control" placeholder="Serie" v-model="detail.serie">
                 <br>
-                <input type="text" class="form-control" placeholder="Estado de Conservación" v-model="detail.conservation_state">
+                <small for="" class="form-text text-muted">Estado de Conservación</small>
+                <select name="" id="" v-model="detail.conservation_state" class="form-control">
+                    <option value="Malo">Malo</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Bueno">Bueno</option>
+                </select>
                 <br>
                 <input type="text" class="form-control" placeholder="Otros" v-model="detail.others">
                 <br>
@@ -94,7 +99,7 @@
                             <br>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-primary m-2" @click="registerHeaders">GRABAR</button>
+                            <button class="btn btn-primary m-2" @click="registerHeaders" v-if="this.$route.params.id==='create'">GRABAR</button>
                             <button class="btn btn-primary m-2" @click="showModal=true" v-if="$route.params.id!=='create'">AGREGAR</button>
                             <button class="btn btn-danger m-2" @click="generateReport" v-if="$route.params.id!=='create'">PDF</button>
                             <br>
