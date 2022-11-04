@@ -102,10 +102,7 @@
                         <input type="text" class="form-control"  placeholder="Correo Electrónico" v-model="responsable.email">
                         <br>
                         <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
-                        <select name="" id="" v-model="responsable.unit_organic" class="form-control">
-                          <option value="">Seleccione</option>
-                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.fullName}}">{{item.fullName}}</option>
-                        </select>
+                          <Select2 name="" id="" v-model="responsable.unit_organic" :options="units_organics"></Select2>
                         <br>
                         <small for="" class="form-text text-muted">Local o Sede</small>
                         <select name="" id="" v-model="responsable.local" class="form-control">
@@ -133,10 +130,7 @@
                       <input type="text" class="form-control"  placeholder="Correo Electrónico" v-model="destino.email">
                       <br>
                       <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
-                      <select name="" id="" v-model="destino.unit_organic" class="form-control">
-                          <option value="">Seleccione</option>
-                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.fullName}}">{{item.fullName}}</option>
-                        </select>
+                      <Select2 name="" id="" v-model="destino.unit_organic" :options="units_organics"></Select2>
                       <br>
                       <small for="" class="form-text text-muted">Local o Sede</small>
                       <select name="" id="" v-model="destino.local" class="form-control">
@@ -206,7 +200,7 @@ import moment from 'moment'
           type: "S",
           showModal: false,
           reason: "M",
-          date: "",
+          date: moment().format("YYYY-MM-DD"),
           document:"",
           responsible_user_id: 0,
           destiny_user_id: 0,
@@ -266,7 +260,9 @@ import moment from 'moment'
         if(response===null){
           alert("Error al traer la lista de Unidades Organicas")
         } else {
-          this.units_organics = response.data.data
+          this.units_organics = response.data.data.map(x=>{
+            return x.fullName
+          })
         }
       },
       validateIfExist: async function(){

@@ -1,3 +1,5 @@
+import Select2 from 'vue3-select2-component';
+
 <template>
     <div class="modal-mask" v-if="showModal">
         <div class="modal-wrapper">
@@ -79,10 +81,8 @@
                         </div>
                         <div class="col-md-6">
                             <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
-                            <select name="" id="" v-model="unit_organic" class="form-control">
-                                <option value="">Seleccione</option>
-                                <option v-for="(item, index) in units_organics" :key="index" value="{{item.fullName}}">{{item.fullName}}</option>
-                            </select>
+                            <Select2 name="" id="" v-model="unit_organic" :options="units_organics">
+                            </Select2>
                             <br>
                         </div>
                         <div class="col-md-6">
@@ -164,7 +164,7 @@ export default {
             unit_organic: "",
             local: "",
             address: "",
-            date: "",
+            date: moment().format("YYYY-MM-DD"),
             register_code: "",
             isNewUser: false,
             user_id: 0,
@@ -201,7 +201,9 @@ export default {
         if(response===null){
           alert("Error al traer la lista de Unidades Organicas")
         } else {
-          this.units_organics = response.data.data
+          this.units_organics = response.data.data.map(x=>{
+            return x.fullName
+          })
         }
       },
         validateIfExist: async function(){
