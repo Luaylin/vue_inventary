@@ -79,14 +79,17 @@
                         <div class="col-md-6">
                             <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
                             <select name="" id="" v-model="unit_organic" class="form-control">
-                                <option value="">TIC</option>
+                                <option value="">Seleccione</option>
+                                <option v-for="(item, index) in units_organics" :key="index" value="{{item.name}}">{{item.name}}</option>
                             </select>
                             <br>
                         </div>
                         <div class="col-md-6">
                             <small for="" class="form-text text-muted">Local o Sede</small>
                             <select name="" id="" v-model="local" class="form-control">
-                                <option value="">Central</option>
+                                <option value="">Seleccione</option>
+                                <option value="Central">Central</option>
+                                <option value="COER">COER</option>
                             </select>
                             <br>
                         </div>
@@ -156,6 +159,7 @@ export default {
             fullname: "",
             document: "",
             email: "",
+            units_organics: [],
             unit_organic: "",
             local: "",
             address: "",
@@ -180,7 +184,25 @@ export default {
             }
         };
     },
+    computed:{
+      formatearListas(){
+        return this.units_organics
+      }
+    },
     methods: {
+        getListOfUnitOrganic: async function(){
+        let response
+        try {
+          response = await axios.get('http://web.regionancash.gob.pe/admin/directory/api/dependency/0/50');
+        } catch (error) {
+          response = null
+        }
+        if(response===null){
+          alert("Error al traer la lista de Unidades Organicas")
+        } else {
+          this.units_organics = response.data.data
+        }
+      },
         validateIfExist: async function(){
             if(this.$route.params.id!=="create"){
                 let response
@@ -319,6 +341,9 @@ export default {
             let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=in&id=${this.$route.params.id}`;
             window.open(reportUrl, '_blank')
         }
+    },
+    mounted(){
+      this.getListOfUnitOrganic()
     },
     created(){
         this.validateIfExist();

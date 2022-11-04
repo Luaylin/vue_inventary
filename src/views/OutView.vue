@@ -103,12 +103,15 @@
                         <br>
                         <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
                         <select name="" id="" v-model="responsable.unit_organic" class="form-control">
-                            <option value="">TIC</option>
+                          <option value="">Seleccione</option>
+                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.name}}">{{item.name}}</option>
                         </select>
                         <br>
                         <small for="" class="form-text text-muted">Local o Sede</small>
                         <select name="" id="" v-model="responsable.local" class="form-control">
-                            <option value="">Central</option>
+                          <option value="">Seleccione</option>
+                          <option value="Central">Central</option>
+                          <option value="COER">COER</option>
                         </select>
                         <br>
                         <input type="text" class="form-control"  placeholder="Dirección" v-model="responsable.address">
@@ -131,12 +134,15 @@
                       <br>
                       <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
                       <select name="" id="" v-model="destino.unit_organic" class="form-control">
-                          <option value="">TIC</option>
-                      </select>
+                          <option value="">Seleccione</option>
+                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.name}}">{{item.name}}</option>
+                        </select>
                       <br>
                       <small for="" class="form-text text-muted">Local o Sede</small>
                       <select name="" id="" v-model="destino.local" class="form-control">
-                          <option value="">Central</option>
+                          <option value="">Seleccione</option>
+                          <option value="Central">Central</option>
+                          <option value="COER">COER</option>
                       </select>
                       <br>
                       <input type="text" class="form-control"  placeholder="Dirección" v-model="destino.address">
@@ -206,6 +212,7 @@ import moment from 'moment'
           destiny_user_id: 0,
           register_code: "",
           details: [],
+          units_organics: [],
           findBien: false,
           responsable: {
             dni: "",
@@ -243,7 +250,25 @@ import moment from 'moment'
           }
         };
     },
+    computed:{
+      formatearListas(){
+        return this.units_organics
+      }
+    },
     methods: {
+      getListOfUnitOrganic: async function(){
+        let response
+        try {
+          response = await axios.get('http://web.regionancash.gob.pe/admin/directory/api/dependency/0/50');
+        } catch (error) {
+          response = null
+        }
+        if(response===null){
+          alert("Error al traer la lista de Unidades Organicas")
+        } else {
+          this.units_organics = response.data.data
+        }
+      },
       validateIfExist: async function(){
             if(this.$route.params.id!=="create"){
                 let response
@@ -501,6 +526,9 @@ import moment from 'moment'
             let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=out&id=${this.$route.params.id}`;
             window.open(reportUrl, '_blank')
         }
+    },
+    mounted(){
+      this.getListOfUnitOrganic()
     },
     created(){
       this.validateIfExist()
