@@ -350,6 +350,7 @@ import moment from 'moment'
                 console.log(response)
                 if(response!==null){
                     this.responsable.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+response.data.return.datosPersona.prenombres;
+                    this.responsable.email = ""
                 } else {
                   alert("Persona no encontrada")
                 }
@@ -404,6 +405,7 @@ import moment from 'moment'
                 }
                 if(response!==null){
                     this.destino.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+response.data.return.datosPersona.prenombres;
+                    this.destino.email = ""
                 } else {
                   alert("Persona no encontrada")
                 }
