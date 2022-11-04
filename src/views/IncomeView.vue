@@ -96,7 +96,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-responsive">
+                <div class="table-responsive" v-if="this.$route.params.id!=='create'">
                     <table class="table">
                         <thead>
                             <tr>

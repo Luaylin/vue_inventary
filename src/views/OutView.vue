@@ -138,7 +138,7 @@
                     </div>
                 </div>
               </div>
-              <div class="table-responsive">
+              <div class="table-responsive" v-if="this.$route.params.id!=='create'">
                 <table class="table">
                     <thead>
                         <tr>
@@ -299,19 +299,20 @@ import moment from 'moment'
                 response = null;
             }
             if(response!==null && response.data.size===1){
-                this.responsable.document = response.data.code;
+                this.responsable.dni = response.data.code;
                 this.responsable.fullname = response.data.data[0].fullName;
                 this.responsable.email = response.data.data[0].mail
             } else {
                 try {
                     response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
-                        dni: this.responsable.document
+                        dni: this.responsable.dni
                     });
                 } catch (error) {
                     this.responsable.fullname = "";
                     this.responsable.email = "";
                     response = null
                 }
+                console.log(response)
                 if(response!==null){
                     this.responsable.fullname = response.data.return.datosPersona.apPrimer+" "+response.data.return.datosPersona.apSegundo+" "+response.data.return.datosPersona.prenombres;
                     this.responsable.email = ""
@@ -354,13 +355,13 @@ import moment from 'moment'
                 response = null;
             }
             if(response!==null && response.data.size===1){
-                this.destino.document = response.data.code;
+                this.destino.dni = response.data.code;
                 this.destino.fullname = response.data.data[0].fullName;
                 this.destino.email = response.data.data[0].mail
             } else {
                 try {
                     response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
-                        dni: this.destino.document
+                        dni: this.destino.dni
                     });
                 } catch (error) {
                     this.destino.fullname = "";
