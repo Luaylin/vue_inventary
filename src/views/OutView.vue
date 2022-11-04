@@ -552,7 +552,7 @@ import moment from 'moment'
   }
   
   .modal-container {
-    width: 500px;
+    max-width: 500px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -560,6 +560,8 @@ import moment from 'moment'
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
     font-family: Helvetica, Arial, sans-serif;
+    overflow: auto;
+    max-height: 80%;
   }
   
   .modal-header h3 {

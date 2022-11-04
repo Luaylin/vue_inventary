@@ -81,8 +81,7 @@ import Select2 from 'vue3-select2-component';
                         </div>
                         <div class="col-md-6">
                             <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
-                            <Select2 name="" id="" v-model="unit_organic" :options="units_organics">
-                            </Select2>
+                            <Select2 name="" id="" v-model="unit_organic" :options="units_organics"></Select2>
                             <br>
                         </div>
                         <div class="col-md-6">
@@ -371,12 +370,11 @@ export default {
   .modal-wrapper {
     display: table-cell;
     vertical-align: middle;
-    overflow-y: scroll;
     max-width: 500px;
   }
   
   .modal-container {
-    width: 500px;
+    max-width: 500px;
     margin: 0px auto;
     padding: 20px 30px;
     background-color: #fff;
@@ -384,6 +382,8 @@ export default {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
     font-family: Helvetica, Arial, sans-serif;
+    overflow: auto;
+    height: 80%;
   }
   
   .modal-header h3 {
