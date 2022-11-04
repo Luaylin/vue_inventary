@@ -104,7 +104,7 @@
                         <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
                         <select name="" id="" v-model="responsable.unit_organic" class="form-control">
                           <option value="">Seleccione</option>
-                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.name}}">{{item.name}}</option>
+                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.fullName}}">{{item.fullName}}</option>
                         </select>
                         <br>
                         <small for="" class="form-text text-muted">Local o Sede</small>
@@ -135,7 +135,7 @@
                       <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
                       <select name="" id="" v-model="destino.unit_organic" class="form-control">
                           <option value="">Seleccione</option>
-                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.name}}">{{item.name}}</option>
+                          <option v-for="(item, index) in units_organics" :key="index" value="{{item.fullName}}">{{item.fullName}}</option>
                         </select>
                       <br>
                       <small for="" class="form-text text-muted">Local o Sede</small>
@@ -327,7 +327,7 @@ import moment from 'moment'
         findResponsable: async function(){
             let response;
             try {
-                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.responsable.document}`);
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.responsable.dni}`);
             } catch (error) {
                 this.responsable.fullname = "";
                 this.responsable.email = "";
@@ -383,7 +383,7 @@ import moment from 'moment'
         findDestino: async function(){
             let response;
             try {
-                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.destino.document}`);
+                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.destino.dni}`);
             } catch (error) {
                 this.destino.fullname = "";
                 this.destino.email = "";

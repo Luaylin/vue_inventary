@@ -26,6 +26,7 @@
                 <br>
                 <small for="" class="form-text text-muted">Estado de Conservación</small>
                 <select name="" id="" v-model="detail.conservation_state" class="form-control">
+                    <option value="">Seleccione</option>
                     <option value="Malo">Malo</option>
                     <option value="Regular">Regular</option>
                     <option value="Bueno">Bueno</option>
@@ -80,7 +81,7 @@
                             <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
                             <select name="" id="" v-model="unit_organic" class="form-control">
                                 <option value="">Seleccione</option>
-                                <option v-for="(item, index) in units_organics" :key="index" value="{{item.name}}">{{item.name}}</option>
+                                <option v-for="(item, index) in units_organics" :key="index" value="{{item.fullName}}">{{item.fullName}}</option>
                             </select>
                             <br>
                         </div>
