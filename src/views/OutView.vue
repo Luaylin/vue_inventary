@@ -101,9 +101,15 @@
                         <br>
                         <input type="text" class="form-control"  placeholder="Correo Electrónico" v-model="responsable.email">
                         <br>
-                        <input type="text" class="form-control"  placeholder="Órgano o Unidad Organica" v-model="responsable.unit_organic">
+                        <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
+                        <select name="" id="" v-model="responsable.unit_organic" class="form-control">
+                            <option value="">TIC</option>
+                        </select>
                         <br>
-                        <input type="text" class="form-control"  placeholder="Local o Sede" v-model="responsable.local">
+                        <small for="" class="form-text text-muted">Local o Sede</small>
+                        <select name="" id="" v-model="responsable.local" class="form-control">
+                            <option value="">Central</option>
+                        </select>
                         <br>
                         <input type="text" class="form-control"  placeholder="Dirección" v-model="responsable.address">
                         <br>
@@ -123,9 +129,15 @@
                       <br>
                       <input type="text" class="form-control"  placeholder="Correo Electrónico" v-model="destino.email">
                       <br>
-                      <input type="text" class="form-control"  placeholder="Órgano o Unidad Organica" v-model="destino.unit_organic">
+                      <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
+                      <select name="" id="" v-model="destino.unit_organic" class="form-control">
+                          <option value="">TIC</option>
+                      </select>
                       <br>
-                      <input type="text" class="form-control"  placeholder="Local o Sede" v-model="destino.local">
+                      <small for="" class="form-text text-muted">Local o Sede</small>
+                      <select name="" id="" v-model="destino.local" class="form-control">
+                          <option value="">Central</option>
+                      </select>
                       <br>
                       <input type="text" class="form-control"  placeholder="Dirección" v-model="destino.address">
                       <br>

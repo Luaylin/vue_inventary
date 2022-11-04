@@ -72,12 +72,17 @@
                             <br>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Órgano o Unidad Organica"
-                                v-model="unit_organic">
+                            <small for="" class="form-text text-muted">Órgano o Unidad Organica</small>
+                            <select name="" id="" v-model="unit_organic" class="form-control">
+                                <option value="">TIC</option>
+                            </select>
                             <br>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Local o Sede" v-model="local">
+                            <small for="" class="form-text text-muted">Local o Sede</small>
+                            <select name="" id="" v-model="local" class="form-control">
+                                <option value="">Central</option>
+                            </select>
                             <br>
                         </div>
                         <div class="col-md-6">
