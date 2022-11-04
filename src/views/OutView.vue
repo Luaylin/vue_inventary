@@ -262,8 +262,6 @@ import moment from 'moment'
                     this.register_code = response.register_code
                     this.responsable.isNewUser = false
                     this.destino.isNewUser = false
-                    this.responsable.user_id = response.responsible_user.id
-                    this.destino.user_id = response.destiny_user.id
                     this.details = response.details
                     this.type = response.type
                     this.reason = response.reason
