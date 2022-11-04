@@ -259,7 +259,7 @@ import moment from 'moment'
       getListOfUnitOrganic: async function(){
         let response
         try {
-          response = await axios.get('http://web.regionancash.gob.pe/admin/directory/api/dependency/0/50');
+          response = await axios.get('http://web.regionancash.gob.pe/admin/directory/api/dependency/0/0');
         } catch (error) {
           response = null
         }
