@@ -246,12 +246,12 @@ import moment from 'moment'
                 }
                 if(response!==null){
                     response = response.data;
-                    this.responsable.fullname = response.responsible_user.fullname
-                    this.responsable.dni = response.responsible_user.document
-                    this.responsable.email = response.responsible_user.email
-                    this.destino.fullname = response.destiny_user.fullname
-                    this.destino.dni = response.destiny_user.document
-                    this.destino.email = response.destiny_user.email
+                    this.responsable.fullname = response.responsible_user_name
+                    this.responsable.dni = response.responsible_user_document
+                    this.responsable.email = response.responsible_user_email
+                    this.destino.fullname = response.destiny_user_name
+                    this.destino.dni = response.destiny_user_document
+                    this.destino.email = response.destiny_user_email
                     this.responsable.unit_organic = response.unit_organic
                     this.responsable.local = response.local
                     this.responsable.address = response.address
