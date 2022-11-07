@@ -62,9 +62,7 @@
         },
         logout: function(){
           localStorage.clear();
-          this.$router.push({
-                    name: "home"
-                    })
+          window.location.reload();
         }
     }
     }
