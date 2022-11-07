@@ -5,7 +5,7 @@
       <div id="sidebar-wrapper">
           <ul class="sidebar-nav">
               <li class="sidebar-brand">
-                <router-link to="/in">Dashboard</router-link>
+                <router-link to="/">Dashboard</router-link>
               </li>
               <li>
                 <router-link to="/in">Ingresos</router-link>
