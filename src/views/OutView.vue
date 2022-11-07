@@ -561,7 +561,7 @@ import moment from 'moment'
     transition: all 0.3s ease;
     font-family: Helvetica, Arial, sans-serif;
     overflow: auto;
-    max-height: 80%;
+    height: 80%;
   }
   
   .modal-header h3 {
