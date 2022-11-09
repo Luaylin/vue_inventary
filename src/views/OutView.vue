@@ -410,7 +410,7 @@ import moment from 'moment'
       searchInventary: async function(){
         let response
         try {
-          response = await axios.get(`${process.env.VUE_APP_API_URL}/inventary/`+this.detail.patrimonial_code,{},{
+          response = await axios.get(`${process.env.VUE_APP_API_URL}/inventary/`+this.detail.patrimonial_code,{
             headers: {
               Authorization: 'Bearer '+localStorage.getItem('token')
             }
