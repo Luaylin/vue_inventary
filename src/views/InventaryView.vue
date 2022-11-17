@@ -14,6 +14,10 @@
                           <th scope="col" rowspan="2">N° DE ORDEN</th>
                           <th scope="col" colspan="9">DESCRIPCIÓN</th>
                           <th scope="col" rowspan="2">OBSERVACIONES</th>
+                          <th scope="col" rowspan="2">UNIDAD ORGANICA</th>
+                          <th scope="col" rowspan="2">LOCAL</th>
+                          <th scope="col" rowspan="2">DNI RESPONSABLE</th>
+                          <th scope="col" rowspan="2">RESPONSABLE</th>
                         </tr>
                         <tr>
                             <th scope="col">CÓDIGO PATRIMONIAL</th>
@@ -25,10 +29,6 @@
                             <th scope="col">LOTE</th>
                             <th scope="col">OTROS</th>
                             <th scope="col">ESTADO DE CONSERVACIÓN</th>
-                            <th scope="col">UNIDAD ORGANICA</th>
-                            <th scope="col">LOCAL</th>
-                            <th scope="col">DNI RESPONSABLE</th>
-                            <th scope="col">RESPONSABLE</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -44,6 +44,10 @@
                           <td><input type="text" class="form-control" v-model="filter.others"></td>
                           <td><input type="text" class="form-control" v-model="filter.conservation_state"></td>
                           <td><input type="text" class="form-control" v-model="filter.observations"></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                          <td></td>
                         </tr>  
                         <tr class="text-center" v-for="(item, index) in inventary" :key="index">
                           <th scope="row">{{index+1}}</th>
