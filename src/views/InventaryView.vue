@@ -25,6 +25,10 @@
                             <th scope="col">LOTE</th>
                             <th scope="col">OTROS</th>
                             <th scope="col">ESTADO DE CONSERVACIÓN</th>
+                            <th scope="col">UNIDAD ORGANICA</th>
+                            <th scope="col">LOCAL</th>
+                            <th scope="col">DNI RESPONSABLE</th>
+                            <th scope="col">RESPONSABLE</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -53,6 +57,10 @@
                           <td>{{item.others}}</td>
                           <td>{{item.conservation_state}}</td>
                           <td>{{item.observations}}</td>
+                          <td>{{item.unit_organic}}</td>
+                          <td>{{item.local}}</td>
+                          <td>{{item.responsible_document}}</td>
+                          <td>{{item.responsible_name}}</td>
                         </tr>                        
                       </tbody>
                 </table>
