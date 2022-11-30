@@ -1,7 +1,7 @@
 import Select2 from 'vue3-select2-component';
 
 <template>
-    <div class="modal-mask" v-if="showModal">
+    <div class="modal-mask" v-if="showModal" v-on:keyup.esc="closeModal">
         <div class="modal-wrapper">
           <div class="modal-container">
     
@@ -342,6 +342,11 @@ export default {
         generateReport: async function(){
             let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=in&id=${this.$route.params.id}`;
             window.open(reportUrl, '_blank')
+        },
+        closeModal: function(){
+            if(this.showModal){
+                this.showModal = false;
+            }
         }
     },
     mounted(){

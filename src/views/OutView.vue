@@ -1,5 +1,5 @@
 <template>
-  <div class="modal-mask" v-if="showModal">
+  <div class="modal-mask" v-if="showModal" v-on:keyup.esc="closeModal">
     <div class="modal-wrapper">
       <div class="modal-container">
 
@@ -521,6 +521,11 @@ import moment from 'moment'
         generateReport: async function(){
             let reportUrl = `${process.env.VUE_APP_API_URL}/report?type=out&id=${this.$route.params.id}`;
             window.open(reportUrl, '_blank')
+        },
+        closeModal: function(){
+            if(this.showModal){
+                this.showModal = false;
+            }
         }
     },
     mounted(){
