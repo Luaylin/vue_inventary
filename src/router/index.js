@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Auth from './middleware'
 
+
 const routes = [
   {
     path: '/',
@@ -42,13 +43,13 @@ const routes = [
   {
     path: '/out/:id',
     name: 'create_movement',
-    component: () => import(/* webpackChunkName: "about" */ '../views/OutView.vue'),
+    component: () => import('../views/OutView.vue'),
     beforeEnter: Auth
   },
   {
     path: '/inventary',
     name: 'inventary',
-    component: () => import(/* webpackChunkName: "about" */ '../views/InventaryView.vue'),
+    component: () => import('../views/InventaryView.vue'),
     beforeEnter: Auth
   }
 ]

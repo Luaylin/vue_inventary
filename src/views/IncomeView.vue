@@ -193,7 +193,7 @@ export default {
         getListOfUnitOrganic: async function(){
         let response
         try {
-          response = await axios.get('http://web.regionancash.gob.pe/admin/directory/api/dependency/0/0');
+          response = await axios.get('/admin/directory/api/dependency/0/0');
         } catch (error) {
           response = null
         }
@@ -251,7 +251,7 @@ export default {
         findUser: async function(){
             let response;
             try {
-                response = await axios.get(`http://web.regionancash.gob.pe/admin/directory/api/people/0/10?code=${this.document}`);
+                response = await axios.get(`/admin/directory/api/people/0/10?code=${this.document}`);
             } catch (error) {
                 this.fullname = "";
                 this.email = "";
@@ -263,7 +263,7 @@ export default {
                 this.email = response.data.data[0].mail
             } else {
                 try {
-                    response = await axios.post(`http://web.regionancash.gob.pe/api/reniec/`,{
+                    response = await axios.post(`/api/reniec/`,{
                         dni: this.document
                     });
                 } catch (error) {
